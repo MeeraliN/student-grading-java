@@ -1,0 +1,79 @@
+import java.io.BufferedReader;  
+import java.io.FileReader;  
+import java.io.IOException;  
+public class trial
+{  
+  public static void main(String[] args)   
+  {  
+     String line = "";  
+     String splitBy = ",";  
+     float max = 0.0;
+     try   
+     {  
+         //parsing a CSV file into BufferedReader class constructor  
+         BufferedReader br = new BufferedReader(new FileReader("C:\\Internship's stuff\\grades.csv"));  
+         while ((line = br.readLine()) != null)   //returns a Boolean value  
+         {  
+            String[] c = line.split(splitBy);    // use comma as separator  
+            float m = ((c[3] + c[4] + c[5] + c[6])\4);
+            String g;
+              if(m < 35)
+              g = 'F';
+              if( m >= 35 && m < 50)
+              g = 'C';
+              if( m >= 50 && m < 70)
+              g = 'B';
+              if(m >= 70)
+              g = 'A';
+
+              //Average and Grade
+
+              System.out.println("Student [First Name = " + c[0] + ", Last Name = " + c[1] + ", University = " + c[2] + 
+                                 ", Test1= " + c[3] + ", Test2 = " + c[4] + ", Test3 = " + c[5] +", Test4 = " + c[6] );  
+              System.out.println(", Average Score = " + m + ", Grade = " + g + "]");
+
+              // Overall Topper
+              if(m > max)
+              {
+                  max = m;
+                  System.out.println(" Topper = " + c[0]);
+              }
+
+              // Universitywise Topper
+              //It is easy to use groupby function in mysql to find the same.
+
+              if(m > max) && c[2] == 'Duke University') 
+              {
+                  max = m;
+                  System.out.println(" Topper of Duke University = " + c[0]);
+              }
+
+              if(m > max) && c[2] == 'University of Florida') 
+              {
+                  max = m;
+                  System.out.println(" Topper of University of Florida = " + c[0]);
+              }
+              if(m > max) && c[2] == 'Union College') 
+              {
+                  max = m;
+                  System.out.println(" Topper of Union College = " + c[0]);
+              }
+              if(m > max) && c[2] == 'University of California	') 
+              {
+                  max = m;
+                  System.out.println(" Topper of University of California = " + c[0]);
+              }
+              if(m > max) && c[2] == 'Boston University') 
+              {
+                  max = m;
+                  System.out.println(" Topper of Boston University = " + c[0]);
+              }
+
+         }  
+     }   
+     catch (IOException e)   
+     {  
+         e.printStackTrace();  
+     }  
+  }    
+} 
